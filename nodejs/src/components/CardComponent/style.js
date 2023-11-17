@@ -26,6 +26,12 @@ export const StyleNameProduct = styled.div`
 
 `
 
+export const WrapperStyleTextSell = styled.span`
+    font-size: 15px;
+    line-height: 24px;
+    color: rgb(120, 120, 120);
+`
+
 export const WrapperReportText = styled.div`
     font-size: 10px;
     color: rgb(128, 128, 137);
