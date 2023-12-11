@@ -69,7 +69,7 @@ const ProductDetailComponent = () => {
                     </WrapperQualityProduct>
                 </div>
                 <div style={{display:'flex', alignItems: 'center', gap: '12px'}}>
-                    <ButtonComponent bordered={false} size={40} styleButton={{background: 'rgb(255, 57, 69)', height: '48px', width: '220px', border: 'none', borderRadius: '4px'}} 
+                    <ButtonComponent size={40} styleButton={{background: 'rgb(255, 57, 69)', height: '48px', width: '220px', border: 'none', borderRadius: '4px'}} 
                         textButton={'Chọn mua'}
                         styleTextButton={{color: '#fff', fontSize: '15px', fontWeight: '300'}}>
                     </ButtonComponent>
