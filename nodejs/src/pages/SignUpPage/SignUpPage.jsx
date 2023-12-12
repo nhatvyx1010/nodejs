@@ -7,6 +7,10 @@ import { Image } from "antd";
 import {EyeFilled, EyeInvisibleFilled} from '@ant-design/icons'
 import {useState} from 'react'
 import { useNavigate } from "react-router-dom";
+import * as UserService from '../../services/UserService'
+import { useMutationHooks } from "../../hooks/useMutationHook";
+import Loading from "../../components/LoadingComponent/Loading";
+
 
 const SignUpPage = () => {
     const navigate = useNavigate()
@@ -15,6 +19,10 @@ const SignUpPage = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
+    const mutation = useMutationHooks(
+        data => UserService.signupUser(data)
+    )
+    const {data, isLoading} = mutation
     const handleOnchangeEmail = (value) => {
         setEmail(value)
     }
@@ -28,7 +36,7 @@ const SignUpPage = () => {
         navigate('/sign-in')
     }
     const handleSignUp = () => {
-        console.log('sign-up', email, password, confirmPassword)
+        mutation.mutate({email, password, confirmPassword})
     }
     return (
         <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgb(0, 0, 0, 0.53)', height: '100vh'}}>
@@ -77,6 +85,8 @@ const SignUpPage = () => {
                     <InputForm placeholder="confirm password" type={isShowConfirmPassword ? "text" : "password"}
                         value={confirmPassword} onChange={handleOnchangeConfirmPassword} />
                 </div>
+                {data?.status === 'ERR' && <span style={{color: 'red'}}>{data?.message}</span>}
+                {/* <Loading isLoading={isLoading}> */}
                 <ButtonComponent
                     disabled={!email.length || !password.length || !confirmPassword.length}
                     onClick={handleSignUp}
@@ -85,6 +95,7 @@ const SignUpPage = () => {
                     textButton={'Đăng ký'}
                     styleTextButton={{color: '#fff', fontSize: '15px', fontWeight: '300'}}>
                 </ButtonComponent>
+                {/* </Loading> */}
                 <p>Bạn đã có tài khoản? <WrapperTextLight onClick={handleNavigateSignIn}>Đăng nhập</WrapperTextLight> </p>
             </WrapperContainerLeft>
             <WrapperContainerRight>
