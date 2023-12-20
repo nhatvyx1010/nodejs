@@ -11,7 +11,11 @@ export const WrapperContentProfile = styled.div`
     display: flex;
     flex-direction: column;
     border: 1px solid #ccc;
-    width: 100%;
+    width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 10px;
+    gap: 30px;
 `
 
 export const WrapperLabel = styled.label`
@@ -24,5 +28,5 @@ export const WrapperLabel = styled.label`
 export const WrapperInput = styled.div`
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
 `
